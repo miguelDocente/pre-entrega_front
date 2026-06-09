@@ -1,0 +1,20 @@
+/* ==================== TIENDA ==================== */
+
+.page-header {
+    background-image: url('../img/banner/banner.png');
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 14px;
+}
+
+.page-header h2,
+.page-header p {
+    color: #fff;
+}
