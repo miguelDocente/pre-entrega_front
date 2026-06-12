@@ -131,12 +131,55 @@ const cardsHTML = productos.map(
         </div>
     `;
 
-});
+    });
 
-console.log(cardsHTML.join(''))
+// console.log(cardsHTML.join(''))
 
 // paso 3 tomar el elemento e insertar el array
 const contenedor = document.querySelector('.productos-container');
 
 contenedor.innerHTML = cardsHTML.join('');
 
+adjuntarEventos(); // adjuntar evento a botones
+
+// ----------------------------------------------- //
+// agregar productos
+function agregarAlCarrito(producto) {
+    // Recuperar el carrito actual o empezar con uno vacío
+    let carrito = JSON.parse(localStorage.getItem('carritoDeCompras')) || [];
+
+    // Buscar si el producto ya existe en el carrito
+    const indiceExistente = carrito.findIndex(item => item.id === producto.id);
+
+    if (indiceExistente !== -1) {
+        // El producto ya está: aumentar cantidad
+        carrito[indiceExistente].cantidad++;
+    } else {
+        // El producto no está: agregarlo con cantidad 1
+        carrito.push({
+            id: producto.id,
+            title: producto.nombre,   // guardamos en inglés para compatibilidad con la API
+            price: producto.precio,
+            image: producto.imagen,
+            cantidad: 1
+        });
+    }
+
+    // Guardar el carrito actualizado
+    localStorage.setItem('carritoDeCompras', JSON.stringify(carrito));
+    alert(`${producto.nombre} agregado al carrito!`);
+}
+
+
+// Adjuntar eventos
+
+function adjuntarEventos() {
+    productos.forEach(producto => {
+        const boton = document.getElementById(`btn-agregar-${producto.id}`);
+        if (boton) {
+            boton.addEventListener('click', () => {
+                agregarAlCarrito(producto);
+            });
+        }
+    });
+}
