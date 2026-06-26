@@ -115,6 +115,43 @@ body {
     display: none;
 }
 
+/* toast */
+.toast-custom {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #088178;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-family: "Spartan", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.toast-custom.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.toast-custom button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
 /* Responsive: menú deslizante desde la derecha en pantallas pequeñas */
 @media (max-width: 799px) {
     .navbar {
