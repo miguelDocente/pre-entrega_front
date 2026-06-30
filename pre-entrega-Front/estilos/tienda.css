@@ -18,3 +18,15 @@
 .page-header p {
     color: #fff;
 }
+
+.ver-descripcion {
+    display: block;
+    text-align: center;
+    padding: 6px 0;
+    margin-bottom: 6px;
+    color: #088178;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
